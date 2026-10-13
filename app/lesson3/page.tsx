@@ -262,8 +262,9 @@ export default function Lesson3() {
             {/* Glowing Shield flare when blocking */}
             {shieldActive && (
               <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: [1, 1.2, 1], opacity: 1 }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="absolute inset-0 bg-orange-500/30 backdrop-blur-[2px] flex items-center justify-center z-20"
               >
                 <div className="px-4 py-2 rounded-xl bg-orange-600 text-white font-black text-sm uppercase tracking-wider flex items-center gap-2 shadow-2xl animate-bounce">

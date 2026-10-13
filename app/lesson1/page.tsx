@@ -197,15 +197,15 @@ export default function Lesson1() {
               alt="Clé dorée"
               className="max-h-64 sm:max-h-72 w-auto object-contain z-20 cursor-pointer"
               animate={{
-                scale: isVictorious ? [1, 1.15, 1.08] : 1 + strengthIndex * 0.04,
-                rotate: isVictorious ? 360 : [0, -2, 2, 0],
+                scale: isVictorious ? 1.08 : 1 + strengthIndex * 0.04,
+                rotate: isVictorious ? 360 : 0,
                 filter: isVictorious
                   ? "drop-shadow(0px 0px 40px rgba(16,185,129,0.9))"
                   : `drop-shadow(0px 0px ${strengthIndex * 12}px rgba(59,130,246,0.8))`
               }}
               transition={{
-                rotate: isVictorious ? { duration: 0.8 } : { repeat: Infinity, duration: 4 },
-                scale: { type: "spring", bounce: 0.5 }
+                rotate: { duration: 0.8, ease: "easeOut" },
+                scale: { duration: 0.3, ease: "easeOut" }
               }}
               onClick={() => {
                 if (strengthIndex < 4) {

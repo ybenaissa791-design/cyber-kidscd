@@ -17,7 +17,7 @@ export default function Navbar() {
   const t = {
     fr: {
       brand: "RED PHOENIX",
-      subBrand: "Cyber Academy",
+      subBrand: "Cyber Club • ENSA Oujda",
       home: "Accueil",
       map: "Missions",
       trophy: "Trophée",
@@ -28,7 +28,7 @@ export default function Navbar() {
     },
     ar: {
       brand: "RED PHOENIX",
-      subBrand: "أكاديمية السايبر",
+      subBrand: "نادي السايبر • ENSA وجدة",
       home: "الرئيسية",
       map: "المهمات",
       trophy: "الكأس",

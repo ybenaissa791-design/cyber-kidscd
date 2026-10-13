@@ -248,14 +248,14 @@ export default function Lesson2() {
               className="max-h-72 w-auto object-contain z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
               animate={
                 roundStatus === "correct"
-                  ? { scale: [1, 0.9, 0], rotate: 720, opacity: 0 }
+                  ? { scale: 0, rotate: 720, opacity: 0 }
                   : roundStatus === "wrong"
-                  ? { scale: 1.25, rotate: [-5, 5, -5, 0], filter: "drop-shadow(0 0 35px rgba(239,68,68,0.9))" }
-                  : { y: [0, -10, 0] }
+                  ? { scale: 1.25, rotate: 5, filter: "drop-shadow(0 0 35px rgba(239,68,68,0.9))" }
+                  : { scale: 1, rotate: 0, opacity: 1, y: [0, -10, 0] }
               }
               transition={{
                 y: { repeat: Infinity, duration: 3, ease: "easeInOut" },
-                scale: { type: "spring", bounce: 0.4 }
+                scale: { duration: 0.4, ease: "easeOut" }
               }}
             />
 

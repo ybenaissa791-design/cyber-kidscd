@@ -31,9 +31,9 @@ export default function Home() {
 
   const t = {
     fr: {
-      badge: "🛡️ Académie Officielle pour Jeunes Cyber-Gardien(ne)s",
+      badge: "🛡️ Club de Cybersécurité RED PHOENIX • ENSA Oujda",
       title: "Le Château Numérique",
-      subtitle: "Le royaume d'Internet est menacé par les virus et les pièges ! Deviens un Cyber-Héros légendaire, déjoue les attaques et protège tes trésors numériques.",
+      subtitle: "Le royaume d'Internet est menacé par les virus et les pièges ! Deviens un Cyber-Héros légendaire, déjoue les attaques et protège tes trésors numériques sous l'égide de l'ENSA Oujda.",
       btnStart: "Commencer l'Aventure 🚀",
       btnContinue: "Continuer la Mission",
       mapTitle: "La Carte des Missions du Royaume",
@@ -45,6 +45,26 @@ export default function Home() {
       missionsDone: "Missions réussies",
       resetBtn: "Recommencer l'aventure",
       resetConfirm: "Es-tu sûr(e) de vouloir recommencer l'aventure à zéro ?",
+      clubSectionBadge: "Club d'Élite Universitaire",
+      clubSectionTitle: "Le Club de Cybersécurité RED PHOENIX - ENSA Oujda",
+      clubSectionSubtitle: "Fondé au sein de l'École Nationale des Sciences Appliquées d'Oujda (ENSAO - Université Mohammed Premier), notre club forme les futurs ingénieurs et sensibilise la société aux enjeux du cyber-espace.",
+      clubPillars: [
+        {
+          icon: "🎯",
+          title: "Sensibilisation & Jeunesse",
+          desc: "Création d'ateliers et de jeux éducatifs pour apprendre aux enfants et adolescents à se protéger en ligne.",
+        },
+        {
+          icon: "🎓",
+          title: "Apprentissage & Formation",
+          desc: "Sessions de formation technique (hacking éthique, cryptographie, sécurité réseau) et compétitions CTF.",
+        },
+        {
+          icon: "🚀",
+          title: "Projets Cyber & R&D",
+          desc: "Développement de solutions de sécurité, recherche d'outils innovants et challenges inter-universitaires.",
+        },
+      ],
       parentSectionTitle: "Pourquoi apprendre la cybersécurité dès le plus jeune âge ?",
       parentPillars: [
         {
@@ -136,9 +156,9 @@ export default function Home() {
       ],
     },
     ar: {
-      badge: "🛡️ الأكاديمية الرسمية لحماة الفضاء الرقمي الصغار",
+      badge: "🛡️ نادي الأمن السيبراني RED PHOENIX • ENSA وجدة",
       title: "القلعة الرقمية",
-      subtitle: "مملكة الإنترنت مهددة بالفيروسات والخدع الماكرة! كن بطلاً سيبرانياً شجاعاً، أحبط الهجمات وتعلّم حماية كنوزك الرقمية بذكاء ومرح.",
+      subtitle: "مملكة الإنترنت مهددة بالفيروسات والخدع الماكرة! كن بطلاً سيبرانياً شجاعاً، أحبط الهجمات وتعلّم حماية كنوزك الرقمية مع مهندسي ENSA وجدة.",
       btnStart: "ابدأ المغامرة الآن 🚀",
       btnContinue: "واصل المهمة",
       mapTitle: "خريطة مهمات المملكة الرقمية",
@@ -150,6 +170,26 @@ export default function Home() {
       missionsDone: "مهمات منجزة",
       resetBtn: "إعادة تعيين المغامرة",
       resetConfirm: "هل أنت متأكد من رغبتك في إعادة المغامرة من البداية؟",
+      clubSectionBadge: "نادي جامعي رائد",
+      clubSectionTitle: "نادي RED PHOENIX للأمن السيبراني - ENSA وجدة",
+      clubSectionSubtitle: "النادي الرسمي التابع للمدرسة الوطنية للعلوم التطبيقية بوجدة (جامعة محمد الأول)، نسعى لتأهيل مهندسي المستقبل ونشر ثقافة الأمان السيبراني في المجتمع.",
+      clubPillars: [
+        {
+          icon: "🎯",
+          title: "التحسيس والتوعية الميدانية",
+          desc: "ابتكار مبادرات وألعاب تفاعلية لتعليم الأطفال والناشئة أساسيات الحماية الرقمية والوقاية من المخاطر.",
+        },
+        {
+          icon: "🎓",
+          title: "التعلم والتدريب التخصصي",
+          desc: "ورشات تقنية مكثفة في الاختراق الأخلاقي، التشفير، والمشاركة في مسابقات التقاط العلم (CTF).",
+        },
+        {
+          icon: "🚀",
+          title: "المشاريع والابتكار السيبراني",
+          desc: "تطوير أدوات وحلول برمجية ذكية، وأبحاث تطبيقية رائدة لحماية الأنظمة الإلكترونية.",
+        },
+      ],
       parentSectionTitle: "لماذا نعلم الأطفال الأمن السيبراني مبكراً؟",
       parentPillars: [
         {
@@ -531,6 +571,46 @@ export default function Home() {
             </button>
           </div>
         )}
+      </section>
+
+      {/* CLUB RED PHOENIX - ENSA OUJDA SECTION */}
+      <section className="w-full bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-rose-500/20 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-64 bg-rose-600/10 blur-3xl pointer-events-none rounded-full"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          
+          <div className="text-center mb-12">
+            <span className="text-xs uppercase font-extrabold tracking-wider text-rose-400 bg-rose-500/10 px-4 py-1.5 rounded-full border border-rose-500/30">
+              {t.clubSectionBadge}
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black text-white mt-4">
+              {t.clubSectionTitle}
+            </h2>
+            <p className="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto mt-2 leading-relaxed">
+              {t.clubSectionSubtitle}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {t.clubPillars.map((pillar, idx) => (
+              <div 
+                key={idx} 
+                className="bg-slate-950/90 p-6 rounded-3xl border border-rose-500/20 hover:border-rose-500/50 shadow-xl transition-all hover:scale-[1.02] flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500/20 to-orange-500/10 border border-rose-500/30 flex items-center justify-center text-2xl mb-4 shadow-inner">
+                    {pillar.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">{pillar.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{pillar.desc}</p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-slate-900 text-xs text-rose-400 font-semibold flex items-center gap-1">
+                  <span>ENSAO Cyber Pillar #{idx + 1}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
       </section>
 
       {/* PARENTS & EDUCATORS SECTION */}

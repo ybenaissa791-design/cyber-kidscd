@@ -13,9 +13,11 @@ export default function Footer() {
 
   const content = {
     fr: {
-      brandDesc: "RED PHOENIX est une initiative éducative dédiée à initier les enfants et adolescents aux fondamentaux de la cybersécurité, de l'hygiène numérique et de la protection de la vie privée à travers des aventures interactives et ludiques.",
-      engineered: "Conçu avec passion pour la sécurité des enfants",
-      missionTitle: "Missions d'Apprentissage",
+      brandTitle: "RED PHOENIX",
+      brandSub: "Club de Cybersécurité • ENSA Oujda",
+      brandDesc: "Le Club de Cybersécurité officiel de l'École Nationale des Sciences Appliquées d'Oujda (ENSAO - Université Mohammed Premier). Nous œuvrons pour la protection numérique, la formation d'ingénieurs d'élite et la vulgarisation auprès des enfants et de la société.",
+      engineered: "Propulsé par les élèves-ingénieurs de l'ENSA Oujda",
+      missionTitle: "Missions du Cyber-Jeu",
       missions: [
         { label: "1. Mots de passe blindés", href: "/lesson1" },
         { label: "2. Détecter l'Hameçonnage (Phishing)", href: "/lesson2" },
@@ -24,25 +26,26 @@ export default function Footer() {
         { label: "5. Mises à Jour & Correctifs", href: "/lesson5" },
         { label: "6. Sauvegardes & Cloud", href: "/lesson6" },
         { label: "7. Le Tunnel Sécurisé (HTTPS / Wi-Fi)", href: "/lesson7" },
-        { label: "🏆 Certificat de Cyber-Héros", href: "/victory" },
+        { label: "🏆 Diplôme Officiel RED PHOENIX", href: "/victory" },
       ],
-      rulesTitle: "Règles d'Or des Cyber-Héros",
-      rules: [
-        "Ne jamais partager son mot de passe, même avec ses amis",
-        "Garder secrète son adresse, son école et ses photos privées",
-        "Demander l'accord de ses parents avant de télécharger un fichier",
-        "Ne pas cliquer sur les cadeaux magiques ou liens suspects",
+      clubActivitiesTitle: "Nos 3 Piliers d'Action à l'ENSA Oujda",
+      clubActivities: [
+        { title: "🎯 Sensibilisation & Enfants", desc: "Ateliers ludiques dans les écoles et collèges pour inculquer les bons réflexes numériques." },
+        { title: "🎓 Apprentissage & Compétitions", desc: "Formations techniques, hacking éthique, cryptographie et compétitions CTF nationales." },
+        { title: "💻 Projets Cyber & Innovation", desc: "Développement d'outils, veille technologique et projets de sécurité open-source." },
       ],
-      contactTitle: "Communauté & Contact",
-      contactDesc: "Rejoignez le club RED PHOENIX et suivez nos ateliers éducatifs :",
-      onlineStatus: "Support & Communauté Actifs",
-      copyright: "© 2026 RED PHOENIX CLUB. Tous droits réservés. Dédié à un Internet plus sûr pour nos enfants.",
-      privacyBadge: "100% Respectueux de la vie privée des enfants (Aucune collecte de données personnelles)",
+      contactTitle: "Communauté & Réseaux Sociaux",
+      contactDesc: "Suivez nos événements, ateliers et conférences à l'ENSA Oujda :",
+      onlineStatus: "Club Actif • ENSA Oujda",
+      copyright: "© 2026 RED PHOENIX - Club de Cybersécurité ENSA Oujda. Développé avec passion pour l'éducation et la sécurité numérique.",
+      privacyBadge: "100% Respectueux de la vie privée des enfants (Aucune donnée personnelle collectée)",
     },
     ar: {
-      brandDesc: "ريد فينيكس (RED PHOENIX) هي مبادرة تعليمية تهدف إلى تعليم الأطفال والناشئين أسس الأمن السيبراني والسلامة الرقمية وحماية البيانات الشخصية عبر ألعاب وتحديات تفاعلية مشوقة.",
-      engineered: "صُمم بحب وشغف لأجل سلامة أطفالنا على الإنترنت",
-      missionTitle: "مهمات التعلم",
+      brandTitle: "RED PHOENIX",
+      brandSub: "نادي الأمن السيبراني • ENSA وجدة",
+      brandDesc: "النادي الرسمي للأمن السيبراني بالمدرسة الوطنية للعلوم التطبيقية بوجدة (ENSAO - جامعة محمد الأول). نهدف إلى نشر الثقافة الرقمية، وتدريب مهندسي المستقبل، وتوعية أطفالنا لحمايتهم في الفضاء السيبراني.",
+      engineered: "مبادرة مبتكرة بإشراف طلبة ومهندسي ENSA وجدة",
+      missionTitle: "مهمات اللعبة التفاعلية",
       missions: [
         { label: "1. كلمات السر القوية", href: "/lesson1" },
         { label: "2. كشف التصيد والاحتيال", href: "/lesson2" },
@@ -53,17 +56,16 @@ export default function Footer() {
         { label: "7. النفق المشفر والإنترنت الآمن", href: "/lesson7" },
         { label: "🏆 شهادة بطل الأمن السيبراني", href: "/victory" },
       ],
-      rulesTitle: "قواعد البطل السيبراني الذهبية",
-      rules: [
-        "لا تشارك كلمة السر أبداً مع أي شخص سوى والديك",
-        "احتفظ بعنوان منزلك واسم مدرستك سراً عن الغرباء",
-        "استشر والديك دائماً قبل تحميل أي لعبة أو برنامج",
-        "احذر من الهدايا المجانية والروابط المجهولة المشبوهة",
+      clubActivitiesTitle: "محاور أنشطة النادي بـ ENSA وجدة",
+      clubActivities: [
+        { title: "🎯 التحسيس والتوعية الميدانية", desc: "تنظيم ورشات توعوية لطلبة المدارس والناشئة لترسيخ عادات الحماية الرقمية." },
+        { title: "🎓 التعلم والتدريب التخصصي", desc: "دورات تقنية في الحماية، اختبار الاختراق الأخلاقي، ومسابقات التقاط العلم (CTF)." },
+        { title: "💻 المشاريع والابتكار السيبراني", desc: "تطوير حلول برمجية ذكية وأدوات أمنية مبتكرة لدعم الأمن السيبراني الوطني." },
       ],
       contactTitle: "التواصل والمجتمع",
-      contactDesc: "انضم إلى نادي RED PHOENIX وشارك في ورش العمل التفاعلية:",
-      onlineStatus: "المجتمع والدعم متاح",
-      copyright: "© 2026 نادي RED PHOENIX. جميع الحقوق محفوظة. من أجل بيئة رقمية آمنة وملهمة لأطفالنا.",
+      contactDesc: "تابعوا فعاليات وورش عمل نادي RED PHOENIX بوجدة:",
+      onlineStatus: "النادي نشط • ENSA وجدة",
+      copyright: "© 2026 نادي RED PHOENIX للأمن السيبراني - ENSA وجدة. صُمم بحب وشغف لأجل سلامة وتوعية أطفالنا الرقمية.",
       privacyBadge: "حماية 100% لخصوصية الأطفال (لا نقوم بجمع أو تخزين أي بيانات شخصية)",
     },
   }[language];
@@ -93,10 +95,10 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-amber-300">
-                  RED PHOENIX
+                  {content.brandTitle}
                 </h3>
                 <p className="text-xs text-rose-300 font-semibold uppercase tracking-wider">
-                  Cyber Security Academy
+                  {content.brandSub}
                 </p>
               </div>
             </div>
@@ -132,20 +134,20 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Golden Rules */}
+          {/* Column 3: 3 Piliers du Club ENSA Oujda */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              {content.rulesTitle}
+              {content.clubActivitiesTitle}
             </h4>
-            <ul className="space-y-3 text-xs sm:text-sm text-slate-400">
-              {content.rules.map((rule, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>{rule}</span>
-                </li>
+            <div className="space-y-3 text-xs sm:text-sm">
+              {content.clubActivities.map((act, idx) => (
+                <div key={idx} className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                  <h5 className="font-bold text-emerald-300 text-xs mb-0.5">{act.title}</h5>
+                  <p className="text-[11px] text-slate-400 leading-snug">{act.desc}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Column 4: Social & Community */}
