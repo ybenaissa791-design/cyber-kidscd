@@ -16,7 +16,8 @@ import {
   ArrowLeft,
   Sparkles, 
   RotateCcw,
-  UserCheck
+  UserCheck,
+  Trophy
 } from "lucide-react";
 
 export default function Lesson4() {
@@ -42,6 +43,8 @@ export default function Lesson4() {
       btnPublic: "Partager dans le Jardin Public 🌐",
       btnNextItem: "Trésor suivant ➡️",
       btnNextMission: "Passer à la Mission 5 (Le Robot Forgeron) 🚀",
+      btnCert: "Obtenir le Certificat 🏆",
+      btnReplayMission: "Rejouer la mission 🔄",
       btnRetry: "Recommencer le tri 🔄",
       backMap: "Retour à la Carte",
       correctTitle: "Bien joué Cyber-Héros !",
@@ -106,7 +109,9 @@ export default function Lesson4() {
       btnSecret: "حفظ في الصندوق السري 🔒",
       btnPublic: "مشاركة في الحديقة العامة 🌐",
       btnNextItem: "فرز البطاقة التالية ➡️",
-      btnNextMission: "الانتقال للمهمة 5 (الروبوت الحداد) 🚀",
+      btnNextMission: "الانتقال للمهمة التالية (الروبوت الحداد) 🚀",
+      btnCert: "الحصول على الشهادة 🏆",
+      btnReplayMission: "إعادة اللعب من جديد 🔄",
       btnRetry: "إعادة التصنيف 🔄",
       backMap: "العودة للخريطة",
       correctTitle: "تصنيف ممتاز يا بطل!",
@@ -434,15 +439,36 @@ export default function Lesson4() {
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                sounds.playClick();
-                router.push("/lesson5");
-              }}
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-lg shadow-xl shadow-amber-950/50 hover:scale-105 active:scale-95 transition cursor-pointer"
-            >
-              {t.btnNextMission}
-            </button>
+            <div className="flex flex-wrap gap-3 mt-4 w-full justify-center">
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  router.push("/lesson5");
+                }}
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span>{t.btnNextMission}</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  router.push("/victory");
+                }}
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <Trophy className="w-4 h-4 fill-slate-950 text-slate-950" />
+                <span>{t.btnCert}</span>
+              </button>
+
+              <button
+                onClick={handleRestart}
+                className="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm sm:text-base border border-slate-700 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>{t.btnReplayMission}</span>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -39,7 +39,9 @@ export default function Lesson7() {
       clearTextLabel: "Données transmises :",
       encryptedText: "🔒 #9x!F7$@zK9 (Chiffré & Illisible par les espions !)",
       clearText: "⚠️ MonMotDePasseSecret123 (En clair, n'importe qui peut le lire !)",
-      btnNextMission: "Accéder au Sommet des Champions & Obtenir ton Diplôme 🏆",
+      btnNextMission: "Obtenir le Certificat d'Appréciation 🏆",
+      btnCert: "Obtenir le Certificat d'Appréciation 🏆",
+      btnReplayMission: "Rejouer la mission 🔄",
       btnReplay: "Rejouer le tunnel 🔄",
       backMap: "Retour à la Carte",
       victoryTitle: "Tunnel Chiffré Activé ! Données Protégées !",
@@ -76,7 +78,9 @@ export default function Lesson7() {
       clearTextLabel: "البيانات المسافرة عبر الشبكة:",
       encryptedText: "🔒 #9x!F7$@zK9 (مشفرة ومستحيلة القراءة للغرباء!)",
       clearText: "⚠️ كلمتي_السرية_123 (مكشوفة وبإمكان أي شخص التجسس عليها!)",
-      btnNextMission: "الصعود لمنصة التتويج واستلام وسام وشهادة البطل 🏆",
+      btnNextMission: "الحصول على الشهادة التقديرية 🏆",
+      btnCert: "الحصول على الشهادة التقديرية 🏆",
+      btnReplayMission: "إعادة اللعب من جديد 🔄",
       btnReplay: "إعادة التحدي 🔄",
       backMap: "العودة للخريطة",
       victoryTitle: "اكتمل تشفير النفق بنجاح باهر!",
@@ -306,16 +310,26 @@ export default function Lesson7() {
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                sounds.playFanfare();
-                router.push("/victory");
-              }}
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-lg sm:text-xl shadow-2xl shadow-amber-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center gap-3"
-            >
-              <Trophy className="w-6 h-6 fill-slate-950" />
-              <span>{t.btnNextMission}</span>
-            </button>
+            <div className="flex flex-wrap gap-3 mt-4 w-full justify-center">
+              <button
+                onClick={() => {
+                  sounds.playFanfare();
+                  router.push("/victory");
+                }}
+                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-base sm:text-lg shadow-2xl shadow-amber-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <Trophy className="w-5 h-5 fill-slate-950 text-slate-950" />
+                <span>{t.btnCert}</span>
+              </button>
+
+              <button
+                onClick={handleReset}
+                className="px-6 py-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-base border border-slate-700 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <RotateCcw className="w-5 h-5" />
+                <span>{t.btnReplayMission}</span>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

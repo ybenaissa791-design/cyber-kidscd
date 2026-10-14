@@ -17,10 +17,10 @@ export default function Navbar() {
   const t = {
     fr: {
       brand: "RED PHOENIX",
-      subBrand: "Cyber Club • ENSA Oujda",
+      subBrand: "Club des Élèves-Ingénieurs en Cybersécurité • ENSA Oujda",
       home: "Accueil",
       map: "Missions",
-      trophy: "Trophée",
+      trophy: "Certificat",
       stars: "Étoiles",
       soundOn: "Son activé",
       soundOff: "Son coupé",
@@ -28,10 +28,10 @@ export default function Navbar() {
     },
     ar: {
       brand: "RED PHOENIX",
-      subBrand: "نادي السايبر • ENSA وجدة",
+      subBrand: "نادي الطلبة المهندسين في الأمن السيبراني • ENSA وجدة",
       home: "الرئيسية",
       map: "المهمات",
-      trophy: "الكأس",
+      trophy: "الشهادة التقديرية",
       stars: "النجوم",
       soundOn: "الصوت مفعّل",
       soundOff: "الصوت معطّل",

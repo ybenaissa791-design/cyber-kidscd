@@ -18,9 +18,13 @@ interface GameContextType {
   setPlayerName: (name: string) => void;
   totalStars: number;
   resetProgress: () => void;
+  adminUnlocked: boolean;
+  unlockAdmin: (code: string) => boolean;
 }
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
+
+export const ADMIN_SECRET_CODE = "Red@123phoenix$";
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("ar");
@@ -28,6 +32,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [completedLevels, setCompletedLevels] = useState<number[]>([]);
   const [unlockedLevel, setUnlockedLevel] = useState<number>(1);
   const [playerName, setPlayerNameState] = useState<string>("");
+  const [adminUnlocked, setAdminUnlocked] = useState<boolean>(false);
   const [hydrated, setHydrated] = useState<boolean>(false);
 
   // Load from localStorage on client mount
@@ -59,8 +64,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       if (savedName) {
         setPlayerNameState(savedName);
       }
+
+      const savedAdmin = sessionStorage.getItem("redphoenix_admin_unlocked");
+      if (savedAdmin === "true") {
+        setAdminUnlocked(true);
+      }
     } catch {
-      // Ignore localStorage errors
+      // Ignore storage errors
     }
     setHydrated(true);
   }, []);
@@ -127,6 +137,20 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     } catch {}
   };
 
+  const unlockAdmin = (code: string): boolean => {
+    if (code.trim() === ADMIN_SECRET_CODE) {
+      setAdminUnlocked(true);
+      try {
+        sessionStorage.setItem("redphoenix_admin_unlocked", "true");
+      } catch {}
+      sounds.playSuccess();
+      return true;
+    } else {
+      sounds.playFail();
+      return false;
+    }
+  };
+
   const totalStars = completedLevels.length * 3;
 
   return (
@@ -144,6 +168,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         setPlayerName,
         totalStars,
         resetProgress,
+        adminUnlocked,
+        unlockAdmin,
       }}
     >
       <div dir={hydrated && language === "ar" ? "rtl" : "ltr"} className="w-full">

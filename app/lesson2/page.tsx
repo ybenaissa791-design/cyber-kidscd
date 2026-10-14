@@ -17,7 +17,8 @@ import {
   Sparkles,
   RotateCcw,
   Eye,
-  HelpCircle
+  HelpCircle,
+  Trophy
 } from "lucide-react";
 
 export default function Lesson2() {
@@ -42,6 +43,8 @@ export default function Lesson2() {
       btnAccept: "Ouvrir & Cliquer 🎁",
       btnNextRound: "Message suivant ➡️",
       btnNextMission: "Passer à la Mission 3 (Le Pare-feu) 🚀",
+      btnCert: "Obtenir le Certificat 🏆",
+      btnReplayMission: "Rejouer la mission 🔄",
       btnRetryRound: "Réessayer l'analyse 🔄",
       backMap: "Retour à la Carte",
       correctTitle: "Bien vu Cyber-Héros ! Piège déjoué !",
@@ -92,7 +95,9 @@ export default function Lesson2() {
       btnIgnore: "رفض الفخ وتجاهله 🛡️",
       btnAccept: "فتح الرابط والهدية 🎁",
       btnNextRound: "فحص الرسالة التالية ➡️",
-      btnNextMission: "الانتقال للمهمة 3 (الجدار الناري) 🚀",
+      btnNextMission: "الانتقال للمهمة التالية (الجدار الناري) 🚀",
+      btnCert: "الحصول على الشهادة 🏆",
+      btnReplayMission: "إعادة اللعب من جديد 🔄",
       btnRetryRound: "إعادة المحاولة 🔄",
       backMap: "العودة للخريطة",
       correctTitle: "ممتاز يا بطل! كشفت الحيلة بنجاح!",
@@ -175,6 +180,14 @@ export default function Lesson2() {
   const handleRetryRound = () => {
     sounds.playClick();
     setRoundStatus("idle");
+  };
+
+  const handleReplayAll = () => {
+    sounds.playClick();
+    setCurrentRound(0);
+    setCompletedRounds([]);
+    setRoundStatus("idle");
+    setIsVictorious(false);
   };
 
   return (
@@ -413,15 +426,36 @@ export default function Lesson2() {
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                sounds.playClick();
-                router.push("/lesson3");
-              }}
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-black text-lg shadow-xl shadow-pink-950/50 hover:scale-105 active:scale-95 transition cursor-pointer"
-            >
-              {t.btnNextMission}
-            </button>
+            <div className="flex flex-wrap gap-3 mt-4 w-full justify-center">
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  router.push("/lesson3");
+                }}
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-black text-sm sm:text-base shadow-xl shadow-pink-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span>{t.btnNextMission}</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  router.push("/victory");
+                }}
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <Trophy className="w-4 h-4 fill-slate-950 text-slate-950" />
+                <span>{t.btnCert}</span>
+              </button>
+
+              <button
+                onClick={handleReplayAll}
+                className="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm sm:text-base border border-slate-700 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>{t.btnReplayMission}</span>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

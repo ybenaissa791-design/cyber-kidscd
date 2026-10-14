@@ -15,7 +15,8 @@ import {
   ArrowLeft,
   RotateCcw,
   Zap,
-  Hammer
+  Hammer,
+  Trophy
 } from "lucide-react";
 
 export default function Lesson5() {
@@ -36,6 +37,8 @@ export default function Lesson5() {
       instruction: "Clique sur chaque fissure pour la souder et restaurer l'armure à 100% !",
       armorStatus: "État de l'Armure :",
       btnNextMission: "Passer à la Mission 6 (La Sauvegarde Céleste) 🚀",
+      btnCert: "Obtenir le Certificat 🏆",
+      btnReplayMission: "Rejouer la mission 🔄",
       btnReplay: "Rejouer l'atelier 🔄",
       backMap: "Retour à la Carte",
       victoryTitle: "Armure Restaurée ! Défense Totale !",
@@ -80,7 +83,9 @@ export default function Lesson5() {
       story: "تعرض درع الحامي السيبراني لضربات قوية وظهرت فيه شقوق مجهرية (ثغرات أمنية)! إن لم نصلحها فوراً، ستتسلل الفيروسات عبرها. ساعد الروبوت الحداد الذكي في لحام الشقوق الأربعة بمطرقته السحرية!",
       instruction: "انقر على كل شق ولحامه بالكامل لإعادة الدرع إلى كفاءة 100%!",
       armorStatus: "حالة صلابة الدرع:",
-      btnNextMission: "الانتقال للمهمة 6 (الخزنة السحابية) 🚀",
+      btnNextMission: "الانتقال للمهمة التالية (الخزنة السحابية) 🚀",
+      btnCert: "الحصول على الشهادة 🏆",
+      btnReplayMission: "إعادة اللعب من جديد 🔄",
       btnReplay: "إعادة الورشة 🔄",
       backMap: "العودة للخريطة",
       victoryTitle: "تم إصلاح الدرع بنجاح خارق!",
@@ -321,15 +326,36 @@ export default function Lesson5() {
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                sounds.playClick();
-                router.push("/lesson6");
-              }}
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-black text-lg shadow-xl shadow-teal-950/50 hover:scale-105 active:scale-95 transition cursor-pointer"
-            >
-              {t.btnNextMission}
-            </button>
+            <div className="flex flex-wrap gap-3 mt-4 w-full justify-center">
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  router.push("/lesson6");
+                }}
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-teal-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span>{t.btnNextMission}</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  router.push("/victory");
+                }}
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-950/50 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <Trophy className="w-4 h-4 fill-slate-950 text-slate-950" />
+                <span>{t.btnCert}</span>
+              </button>
+
+              <button
+                onClick={handleReset}
+                className="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm sm:text-base border border-slate-700 hover:scale-105 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>{t.btnReplayMission}</span>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
