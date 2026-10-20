@@ -42,6 +42,7 @@ export default function Lesson4() {
       btnSecret: "Garder dans le Coffre Secret 🔒",
       btnPublic: "Partager dans le Jardin Public 🌐",
       btnNextItem: "Trésor suivant ➡️",
+      btnRetryItem: "Réessayer ce trésor 🔄",
       btnNextMission: "Passer à la Mission 5 (Le Robot Forgeron) 🚀",
       btnCert: "Obtenir le Certificat 🏆",
       btnReplayMission: "Rejouer la mission 🔄",
@@ -49,6 +50,8 @@ export default function Lesson4() {
       backMap: "Retour à la Carte",
       correctTitle: "Bien joué Cyber-Héros !",
       wrongTitle: "Attention à ta vie privée !",
+      infoLabel: "Information",
+      toClassifyLabel: "Donnée à classer",
       victoryTitle: "Tes Trésors sont sous Haute Protection !",
       victoryText: "Félicitations ! Tu as su séparer tes secrets privés de ce qui peut être partagé. Grâce à toi, aucun inconnu ne pourra utiliser tes informations contre toi !",
       goldenRuleTitle: "La Règle d'Or :",
@@ -109,6 +112,7 @@ export default function Lesson4() {
       btnSecret: "حفظ في الصندوق السري 🔒",
       btnPublic: "مشاركة في الحديقة العامة 🌐",
       btnNextItem: "فرز البطاقة التالية ➡️",
+      btnRetryItem: "إعادة المحاولة لهذا الكنز 🔄",
       btnNextMission: "الانتقال للمهمة التالية (الروبوت الحداد) 🚀",
       btnCert: "الحصول على الشهادة 🏆",
       btnReplayMission: "إعادة اللعب من جديد 🔄",
@@ -116,6 +120,8 @@ export default function Lesson4() {
       backMap: "العودة للخريطة",
       correctTitle: "تصنيف ممتاز يا بطل!",
       wrongTitle: "احذر على خصوصيتك!",
+      infoLabel: "المعلومة",
+      toClassifyLabel: "معلومة للتصنيف",
       victoryTitle: "أسرارك وكنوزك في أمان تام!",
       victoryText: "أحسنت صنعاً! لقد أتقنت أعظم مهارات الحماية الرقمية: حماية الهوية الشخصية ومنع المتطفلين من معرفة تفاصيل حياتك اليومية!",
       goldenRuleTitle: "القاعدة الذهبية:",
@@ -203,6 +209,11 @@ export default function Lesson4() {
     }
   };
 
+  const handleRetryQuestion = () => {
+    sounds.playClick();
+    setFeedback(null);
+  };
+
   const handleNext = () => {
     sounds.playClick();
     setFeedback(null);
@@ -265,12 +276,12 @@ export default function Lesson4() {
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center z-10">
         
         {/* Left: Treasure Chest Visual */}
-        <div className="lg:col-span-5 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-6 relative overflow-hidden min-h-[380px]">
-          <div className="relative w-full h-72 flex items-center justify-center">
+        <div className="lg:col-span-5 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-4 sm:p-6 relative overflow-hidden min-h-[250px] sm:min-h-[350px]">
+          <div className="relative w-full h-52 sm:h-64 md:h-72 flex items-center justify-center">
             <motion.img
               src="/assestes/img7_tresor.png"
               alt="Coffre au Trésor"
-              className="max-h-72 w-auto object-contain z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
+              className="max-h-full w-auto object-contain z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
               animate={{
                 y: [0, -8, 0],
                 filter: feedback === "correct" 
@@ -298,14 +309,14 @@ export default function Lesson4() {
             key={currentItem.id}
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-slate-900 border border-slate-700/80 rounded-3xl p-6 shadow-xl relative"
+            className="bg-slate-900 border border-slate-700/80 rounded-3xl p-5 sm:p-6 shadow-xl relative"
           >
             <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-800 text-xs">
               <span className="font-bold text-amber-400 uppercase tracking-wider">
-                Information #{currentItem.id}
+                {t.infoLabel} #{currentItem.id}
               </span>
               <span className="bg-slate-800 text-slate-300 px-3 py-1 rounded-full font-mono text-xs">
-                Donnée à classer
+                {t.toClassifyLabel}
               </span>
             </div>
 
@@ -320,7 +331,7 @@ export default function Lesson4() {
                 {/* Secret button */}
                 <button
                   onClick={() => handleClassify(true)}
-                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-amber-950/40 border-b-4 border-amber-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-amber-950/40 border-b-4 border-amber-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2 min-h-[50px]"
                 >
                   <Lock className="w-5 h-5 text-slate-950" />
                   <span>{t.btnSecret}</span>
@@ -329,7 +340,7 @@ export default function Lesson4() {
                 {/* Public button */}
                 <button
                   onClick={() => handleClassify(false)}
-                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-black text-sm sm:text-base shadow-lg shadow-cyan-950/40 border-b-4 border-cyan-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-black text-sm sm:text-base shadow-lg shadow-cyan-950/40 border-b-4 border-cyan-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2 min-h-[50px]"
                 >
                   <Globe className="w-5 h-5 text-white" />
                   <span>{t.btnPublic}</span>
@@ -363,14 +374,26 @@ export default function Lesson4() {
                   </div>
                 </div>
 
-                {currentIdx < t.items.length - 1 && (
-                  <button
-                    onClick={handleNext}
-                    className="px-5 py-2.5 rounded-xl bg-white text-slate-950 font-black text-xs sm:text-sm whitespace-nowrap cursor-pointer hover:bg-slate-200 transition"
-                  >
-                    {t.btnNextItem}
-                  </button>
-                )}
+                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                  {feedback === "wrong" && (
+                    <button
+                      onClick={handleRetryQuestion}
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-black text-xs sm:text-sm whitespace-nowrap cursor-pointer transition shadow-md min-h-[44px] flex items-center justify-center gap-1.5"
+                    >
+                      <RotateCcw className="w-4 h-4" />
+                      <span>{t.btnRetryItem}</span>
+                    </button>
+                  )}
+
+                  {feedback === "correct" && currentIdx < t.items.length - 1 && (
+                    <button
+                      onClick={handleNext}
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white text-slate-950 font-black text-xs sm:text-sm whitespace-nowrap cursor-pointer hover:bg-slate-200 transition min-h-[44px] flex items-center justify-center gap-1.5"
+                    >
+                      <span>{t.btnNextItem}</span>
+                    </button>
+                  )}
+                </div>
               </motion.div>
             )}
 

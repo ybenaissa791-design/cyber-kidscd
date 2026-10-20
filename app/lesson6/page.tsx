@@ -38,6 +38,9 @@ export default function Lesson6() {
       instruction: "Transfère chaque trésor numérique dans le coffre-fort céleste pour le mettre à l'abri !",
       vaultLabel: "Coffre Céleste Sécurisé",
       vaultCounter: "Fichiers synchronisés :",
+      statusSecured: "✅ SÉCURISÉ",
+      statusWaiting: "☁️ EN ATTENTE",
+      badgeSaved: "Sauvegardé ✓",
       btnBackup: "Sauvegarder ☁️",
       btnNextMission: "Passer à la Mission 7 (Le Tunnel Sécurisé) 🚀",
       btnCert: "Obtenir le Certificat 🏆",
@@ -83,6 +86,9 @@ export default function Lesson6() {
       instruction: "انقل كل كنز رقمي إلى الخزنة السحابية لحمايته من أي ضياع مفاجئ!",
       vaultLabel: "الخزنة السحابية المشفرة",
       vaultCounter: "الملفات المحفوظة بأمان:",
+      statusSecured: "✅ محمي بالكامل",
+      statusWaiting: "☁️ قيد الانتظار",
+      badgeSaved: "تم الحفظ ✓",
       btnBackup: "حفظ ورفع ☁️",
       btnNextMission: "الانتقال للمهمة التالية (النفق المشفر) 🚀",
       btnCert: "الحصول على الشهادة 🏆",
@@ -194,12 +200,12 @@ export default function Lesson6() {
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center z-10">
         
         {/* Left: The Smiling Cloud Vault Visual */}
-        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-6 relative overflow-hidden min-h-[400px]">
-          <div className="relative w-full h-72 flex items-center justify-center">
+        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-4 sm:p-6 relative overflow-hidden min-h-[250px] sm:min-h-[350px]">
+          <div className="relative w-full h-52 sm:h-64 md:h-72 flex items-center justify-center">
             <motion.img
               src="/assestes/img7_sauvegarde.png"
               alt="Coffre-Fort du Cloud"
-              className="max-h-72 w-auto object-contain z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
+              className="max-h-full w-auto object-contain z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
               animate={{
                 y: [0, -8, 0],
                 filter: isVictorious
@@ -219,7 +225,7 @@ export default function Lesson6() {
               {t.vaultCounter}
             </span>
             <span className="text-sm font-black font-mono text-sky-400">
-              {backedUpIds.length} / 4 {backedUpIds.length === 4 ? "✅ SÉCURISÉ" : "☁️ EN ATTENTE"}
+              {backedUpIds.length} / 4 {backedUpIds.length === 4 ? t.statusSecured : t.statusWaiting}
             </span>
           </div>
         </div>
@@ -261,7 +267,7 @@ export default function Lesson6() {
                 <button
                   disabled={isBackedUp}
                   onClick={() => handleBackup(item.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 min-h-[44px] ${
                     isBackedUp
                       ? "bg-sky-500/20 text-sky-300 border border-sky-500/40 cursor-default"
                       : "bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-md active:scale-95"
@@ -270,7 +276,7 @@ export default function Lesson6() {
                   {isBackedUp ? (
                     <>
                       <FileCheck2 className="w-3.5 h-3.5" />
-                      <span>Sauvegardé ✓</span>
+                      <span>{t.badgeSaved}</span>
                     </>
                   ) : (
                     <span>{t.btnBackup}</span>

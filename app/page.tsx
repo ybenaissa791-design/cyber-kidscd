@@ -43,6 +43,11 @@ export default function Home() {
       levelReady: "Prêt à jouer !",
       progressLabel: "Progression de l'Aventure",
       missionsDone: "Missions réussies",
+      fortressLabel: "🏰 Forteresse RED PHOENIX",
+      readyHeroLabel: "🛡️ Prêt pour la mission !",
+      replayMissionBtn: "Rejouer la mission",
+      missionPrefix: "Mission",
+      finaleLabel: "🏆 Finale",
       resetBtn: "Recommencer l'aventure",
       resetConfirm: "Es-tu sûr(e) de vouloir recommencer l'aventure à zéro ?",
       clubSectionBadge: "Club des Élèves-Ingénieurs en Cybersécurité",
@@ -168,6 +173,11 @@ export default function Home() {
       levelReady: "جاهزة للبدء!",
       progressLabel: "تقدم المغامرة",
       missionsDone: "مهمات منجزة",
+      fortressLabel: "🏰 قلعة RED PHOENIX الحصينة",
+      readyHeroLabel: "🛡️ البطل مستعد للمهمة!",
+      replayMissionBtn: "إعادة اللعب",
+      missionPrefix: "المهمة",
+      finaleLabel: "🏆 التحدي النهائي",
       resetBtn: "إعادة تعيين المغامرة",
       resetConfirm: "هل أنت متأكد من رغبتك في إعادة المغامرة من البداية؟",
       clubSectionBadge: "نادي الطلبة المهندسين في تخصص الأمن السيبراني",
@@ -353,7 +363,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
               <span className="text-sm font-bold text-indigo-200 bg-indigo-950/80 px-3 py-1.5 rounded-lg border border-indigo-500/40">
-                🏰 Forteresse RED PHOENIX
+                {t.fortressLabel}
               </span>
             </div>
           </motion.div>
@@ -377,7 +387,7 @@ export default function Home() {
                 className="w-52 sm:w-64 md:w-80 object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] filter drop-shadow(0 0 25px rgba(56,189,248,0.5))"
               />
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-blue-500/20 backdrop-blur-md border border-blue-400/40 text-blue-200 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap shadow-md">
-                🛡️ Prêt pour la mission !
+                {t.readyHeroLabel}
               </div>
             </div>
           </motion.div>
@@ -465,7 +475,7 @@ export default function Home() {
                       ? "bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse"
                       : "bg-slate-800 text-slate-400"
                   }`}>
-                    {lvl.id === 8 ? "🏆 Finale" : `Mission ${lvl.id}`}
+                    {lvl.id === 8 ? t.finaleLabel : `${t.missionPrefix} ${lvl.id}`}
                   </span>
 
                   <div className="flex items-center gap-1">
@@ -528,7 +538,7 @@ export default function Home() {
                       sounds.playClick();
                       router.push(lvl.slug);
                     }}
-                    className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                    className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px] ${
                       !isUnlocked
                         ? "bg-slate-800 text-slate-600 cursor-not-allowed"
                         : isCompleted
@@ -539,7 +549,7 @@ export default function Home() {
                     {isCompleted ? (
                       <>
                         <RotateCcw className="w-3.5 h-3.5" />
-                        <span>Rejouer la mission</span>
+                        <span>{t.replayMissionBtn}</span>
                       </>
                     ) : isUnlocked ? (
                       <>

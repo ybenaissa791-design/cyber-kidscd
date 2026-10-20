@@ -36,6 +36,10 @@ export default function Lesson5() {
       story: "L'armure magique du Cyber-Gardien a subi des chocs. Des micro-fissures (des failles de sécurité) sont apparues ! Si on ne les répare pas, les virus peuvent s'y glisser. Aide le petit robot forgeron à appliquer les 4 patchs protecteurs avec son marteau magique !",
       instruction: "Clique sur chaque fissure pour la souder et restaurer l'armure à 100% !",
       armorStatus: "État de l'Armure :",
+      statusArmored: "🛡️ BLINDÉ !",
+      statusPatching: "⚠️ EN COURS DE PATCH",
+      badgePatched: "PATCHÉ ✓",
+      badgeVulnerable: "FAILLE ⚠️",
       btnNextMission: "Passer à la Mission 6 (La Sauvegarde Céleste) 🚀",
       btnCert: "Obtenir le Certificat 🏆",
       btnReplayMission: "Rejouer la mission 🔄",
@@ -83,6 +87,10 @@ export default function Lesson5() {
       story: "تعرض درع الحامي السيبراني لضربات قوية وظهرت فيه شقوق مجهرية (ثغرات أمنية)! إن لم نصلحها فوراً، ستتسلل الفيروسات عبرها. ساعد الروبوت الحداد الذكي في لحام الشقوق الأربعة بمطرقته السحرية!",
       instruction: "انقر على كل شق ولحامه بالكامل لإعادة الدرع إلى كفاءة 100%!",
       armorStatus: "حالة صلابة الدرع:",
+      statusArmored: "🛡️ فولاذي ومحصن !",
+      statusPatching: "⚠️ قيد الإصلاح",
+      badgePatched: "تم الإصلاح ✓",
+      badgeVulnerable: "ثغرة مكشوفة ⚠️",
       btnNextMission: "الانتقال للمهمة التالية (الخزنة السحابية) 🚀",
       btnCert: "الحصول على الشهادة 🏆",
       btnReplayMission: "إعادة اللعب من جديد 🔄",
@@ -199,12 +207,12 @@ export default function Lesson5() {
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center z-10">
         
         {/* Left: The Robot Engineer Visual */}
-        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-6 relative overflow-hidden min-h-[400px]">
-          <div className="relative w-full h-72 flex items-center justify-center">
+        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-4 sm:p-6 relative overflow-hidden min-h-[250px] sm:min-h-[350px]">
+          <div className="relative w-full h-52 sm:h-64 md:h-72 flex items-center justify-center">
             <motion.img
               src="/assestes/img8_maj.png"
               alt="Robot Forgeron de mise à jour"
-              className="max-h-72 w-auto object-contain z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
+              className="max-h-full w-auto object-contain z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
               animate={{
                 y: [0, -6, 0],
                 filter: isVictorious
@@ -222,7 +230,7 @@ export default function Lesson5() {
             <div className="flex justify-between items-center text-xs mb-1.5 font-bold">
               <span className="text-slate-400">{t.armorStatus}</span>
               <span className={`font-mono ${percentage === 100 ? "text-emerald-400" : "text-amber-400"}`}>
-                {percentage}% {percentage === 100 ? "🛡️ BLINDÉ !" : "⚠️ EN COURS DE PATCH"}
+                {percentage}% {percentage === 100 ? t.statusArmored : t.statusPatching}
               </span>
             </div>
 
@@ -252,7 +260,7 @@ export default function Lesson5() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleFixCrack(crack.id)}
-                className={`p-4 rounded-2xl border text-start flex items-start gap-3.5 transition-all cursor-pointer ${
+                className={`p-4 rounded-2xl border text-start flex items-start gap-3.5 transition-all cursor-pointer min-h-[58px] ${
                   isFixed
                     ? "bg-teal-950/60 border-teal-500/50 shadow-[0_0_15px_rgba(20,184,166,0.2)]"
                     : "bg-slate-900/70 hover:bg-slate-900 border-slate-800 hover:border-teal-500/40"
@@ -274,7 +282,7 @@ export default function Lesson5() {
                     <span className={`text-[11px] font-mono px-2 py-0.5 rounded ${
                       isFixed ? "bg-teal-950 text-teal-300 border border-teal-800" : "bg-slate-950 text-amber-400"
                     }`}>
-                      {isFixed ? "PATCHÉ ✓" : "FAILLE ⚠️"}
+                      {isFixed ? t.badgePatched : t.badgeVulnerable}
                     </span>
                   </div>
                   <p className="text-xs text-slate-400 mt-1 leading-normal">

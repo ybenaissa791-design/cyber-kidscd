@@ -39,6 +39,8 @@ export default function Lesson7() {
       clearTextLabel: "Données transmises :",
       encryptedText: "🔒 #9x!F7$@zK9 (Chiffré & Illisible par les espions !)",
       clearText: "⚠️ MonMotDePasseSecret123 (En clair, n'importe qui peut le lire !)",
+      ringActive: "ACTIF ⚡",
+      ringInactive: "DÉSACTIVÉ",
       btnNextMission: "Obtenir le Certificat d'Appréciation 🏆",
       btnCert: "Obtenir le Certificat d'Appréciation 🏆",
       btnReplayMission: "Rejouer la mission 🔄",
@@ -78,6 +80,8 @@ export default function Lesson7() {
       clearTextLabel: "البيانات المسافرة عبر الشبكة:",
       encryptedText: "🔒 #9x!F7$@zK9 (مشفرة ومستحيلة القراءة للغرباء!)",
       clearText: "⚠️ كلمتي_السرية_123 (مكشوفة وبإمكان أي شخص التجسس عليها!)",
+      ringActive: "مفعّل ⚡",
+      ringInactive: "معطّل",
       btnNextMission: "الحصول على الشهادة التقديرية 🏆",
       btnCert: "الحصول على الشهادة التقديرية 🏆",
       btnReplayMission: "إعادة اللعب من جديد 🔄",
@@ -184,8 +188,8 @@ export default function Lesson7() {
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center z-10">
         
         {/* Left: The Luminous Tunnel Visual */}
-        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-6 relative overflow-hidden min-h-[400px]">
-          <div className="relative w-full h-72 rounded-2xl overflow-hidden flex items-center justify-center">
+        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-4 sm:p-6 relative overflow-hidden min-h-[250px] sm:min-h-[350px]">
+          <div className="relative w-full h-52 sm:h-64 md:h-72 rounded-2xl overflow-hidden flex items-center justify-center">
             <motion.img
               src="/assestes/img8_tunnel.png"
               alt="Tunnel Magique Lumineux"
@@ -236,7 +240,7 @@ export default function Lesson7() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleActivateRing(ring.id)}
-                className={`p-4 rounded-2xl border text-start flex items-start gap-3.5 transition-all cursor-pointer ${
+                className={`p-4 rounded-2xl border text-start flex items-start gap-3.5 transition-all cursor-pointer min-h-[58px] ${
                   isActive
                     ? "bg-cyan-950/60 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.3)]"
                     : "bg-slate-900/70 hover:bg-slate-900 border-slate-800 hover:border-cyan-500/40"
@@ -258,7 +262,7 @@ export default function Lesson7() {
                     <span className={`text-[11px] font-mono px-2 py-0.5 rounded ${
                       isActive ? "bg-cyan-950 text-cyan-300 border border-cyan-800" : "bg-slate-950 text-slate-500"
                     }`}>
-                      {isActive ? "ACTIF ⚡" : "DÉSACTIVÉ"}
+                      {isActive ? t.ringActive : t.ringInactive}
                     </span>
                   </div>
                   <p className="text-xs text-slate-400 mt-1 leading-normal">

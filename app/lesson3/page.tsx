@@ -39,9 +39,12 @@ export default function Lesson3() {
       concept: "Fondement : Le Pare-feu (Firewall) et l'Antivirus",
       story: "Tu es le Capitaine de la garde ! Devant les portes du château, un flot de données arrive. Le Pare-feu doit laisser passer les amis et dresser le bouclier de flammes contre les robots espions et les virus !",
       gateLabel: "Porte Principale de la Forteresse",
+      packetLabel: "Paquet",
+      blockAlert: "BLOCAGE PARE-FEU ! 🛡️",
       btnAllow: "Autoriser l'ami ✅",
       btnBlock: "Bloquer au Bouclier 🛡️",
       btnNextItem: "Donnée suivante ➡️",
+      btnRetryQuestion: "Réessayer ce paquet 🔄",
       btnNextMission: "Passer à la Mission 4 (Les Trésors Privés) 🚀",
       btnCert: "Obtenir le Certificat 🏆",
       btnReplayMission: "Rejouer la mission 🔄",
@@ -97,9 +100,12 @@ export default function Lesson3() {
       concept: "الأساس الثالث: الجدار الناري ومكافح الفيروسات",
       story: "أنت قائد حرس القلعة الرقمية! على بوابات المملكة، تتدفق حزم البيانات يومياً. مهمتك تشغيل الجدار الناري للسماح بمرور الأصدقاء، ورفع الدرع في وجه الحشرات والفيروسات الغازية!",
       gateLabel: "البوابة الرئيسية للقلعة الحصينة",
+      packetLabel: "الحزمة",
+      blockAlert: "صد الجدار الناري ! 🛡️",
       btnAllow: "السماح بالمرور ✅",
       btnBlock: "الصد بالدرع الناري 🛡️",
       btnNextItem: "فحص الحزمة التالية ➡️",
+      btnRetryQuestion: "إعادة المحاولة لهذا الملف 🔄",
       btnNextMission: "الانتقال للمهمة التالية (الكنوز والخصوصية) 🚀",
       btnCert: "الحصول على الشهادة 🏆",
       btnReplayMission: "إعادة اللعب من جديد 🔄",
@@ -186,6 +192,12 @@ export default function Lesson3() {
     }
   };
 
+  const handleRetryQuestion = () => {
+    sounds.playClick();
+    setFeedback(null);
+    setShieldActive(false);
+  };
+
   const handleNext = () => {
     sounds.playClick();
     setFeedback(null);
@@ -249,9 +261,9 @@ export default function Lesson3() {
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center z-10">
         
         {/* Left: The Fiery Firewall Visual */}
-        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-6 relative overflow-hidden min-h-[400px]">
+        <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-900/80 border border-slate-800 rounded-3xl p-4 sm:p-6 relative overflow-hidden min-h-[260px] sm:min-h-[360px]">
           
-          <div className="relative w-full h-72 rounded-2xl overflow-hidden flex items-center justify-center">
+          <div className="relative w-full h-52 sm:h-64 md:h-72 rounded-2xl overflow-hidden flex items-center justify-center">
             {/* The fiery brick wall */}
             <motion.img
               src="/assestes/img6_parefeu (2).png"
@@ -272,9 +284,9 @@ export default function Lesson3() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="absolute inset-0 bg-orange-500/30 backdrop-blur-[2px] flex items-center justify-center z-20"
               >
-                <div className="px-4 py-2 rounded-xl bg-orange-600 text-white font-black text-sm uppercase tracking-wider flex items-center gap-2 shadow-2xl animate-bounce">
+                <div className="px-4 py-2 rounded-xl bg-orange-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2 shadow-2xl animate-bounce">
                   <Flame className="w-5 h-5" />
-                  <span>BLOCAGE PARE-FEU ! 🛡️</span>
+                  <span>{t.blockAlert}</span>
                 </div>
               </motion.div>
             )}
@@ -283,7 +295,7 @@ export default function Lesson3() {
           <div className="w-full mt-4 flex items-center justify-between text-xs text-slate-400">
             <span>{t.gateLabel}</span>
             <span className="text-amber-400 font-bold">
-              Paquet {currentIdx + 1} / {t.packets.length}
+              {t.packetLabel} {currentIdx + 1} / {t.packets.length}
             </span>
           </div>
 
@@ -297,19 +309,19 @@ export default function Lesson3() {
             key={currentPacket.id}
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-slate-900 border border-slate-700/80 rounded-3xl p-6 shadow-xl relative"
+            className="bg-slate-900 border border-slate-700/80 rounded-3xl p-5 sm:p-6 shadow-xl relative"
           >
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-xs">
               <span className="font-bold text-orange-400 flex items-center gap-1.5 uppercase tracking-wider">
                 <Shield className="w-4 h-4 text-orange-400" />
-                Donnée entrante #{currentPacket.id}
+                {t.packetLabel} #{currentPacket.id}
               </span>
               <span className="bg-slate-800 text-slate-300 px-2.5 py-0.5 rounded-full font-mono">
                 TCP / Port 443
               </span>
             </div>
 
-            <h3 className="text-xl font-black text-white mb-2">
+            <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
               {currentPacket.name}
             </h3>
 
@@ -322,14 +334,14 @@ export default function Lesson3() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                 <button
                   onClick={() => handleDecision(true)}
-                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-sm sm:text-base shadow-lg shadow-emerald-950/40 border-b-4 border-emerald-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-sm sm:text-base shadow-lg shadow-emerald-950/40 border-b-4 border-emerald-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2 min-h-[50px]"
                 >
                   <span>{t.btnAllow}</span>
                 </button>
 
                 <button
                   onClick={() => handleDecision(false)}
-                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 text-white font-black text-sm sm:text-base shadow-lg shadow-rose-950/40 border-b-4 border-rose-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                  className="py-4 px-5 rounded-2xl bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 text-white font-black text-sm sm:text-base shadow-lg shadow-rose-950/40 border-b-4 border-rose-800 transition hover:scale-[1.02] active:scale-98 cursor-pointer flex items-center justify-center gap-2 min-h-[50px]"
                 >
                   <span>{t.btnBlock}</span>
                 </button>
@@ -361,14 +373,26 @@ export default function Lesson3() {
                   </div>
                 </div>
 
-                {currentIdx < t.packets.length - 1 && (
-                  <button
-                    onClick={handleNext}
-                    className="px-5 py-2.5 rounded-xl bg-white text-slate-950 font-black text-xs sm:text-sm whitespace-nowrap cursor-pointer hover:bg-slate-200 transition"
-                  >
-                    {t.btnNextItem}
-                  </button>
-                )}
+                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                  {feedback === "wrong" && (
+                    <button
+                      onClick={handleRetryQuestion}
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-black text-xs sm:text-sm whitespace-nowrap cursor-pointer transition shadow-md min-h-[44px] flex items-center justify-center gap-1.5"
+                    >
+                      <RotateCcw className="w-4 h-4" />
+                      <span>{t.btnRetryQuestion}</span>
+                    </button>
+                  )}
+
+                  {feedback === "correct" && currentIdx < t.packets.length - 1 && (
+                    <button
+                      onClick={handleNext}
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white text-slate-950 font-black text-xs sm:text-sm whitespace-nowrap cursor-pointer hover:bg-slate-200 transition min-h-[44px] flex items-center justify-center gap-1.5"
+                    >
+                      <span>{t.btnNextItem}</span>
+                    </button>
+                  )}
+                </div>
               </motion.div>
             )}
 
